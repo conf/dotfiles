@@ -38,6 +38,8 @@ setopt complete_aliases
 
 zle -N newtab
 
+bindkey -v # use vim keys in command line
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
