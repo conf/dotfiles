@@ -4,6 +4,9 @@ else
   export PS1='%3~$(git_info_for_prompt)%# '
 fi
 
+# Now we can cd to any path in these dirs from anywhere, yay!
+cdpath=(~ ~/projects)
+
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
