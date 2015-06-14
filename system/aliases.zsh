@@ -6,3 +6,9 @@ then
   alias ls="gls --color=auto"
   alias lh="ls -lh"
 fi
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
