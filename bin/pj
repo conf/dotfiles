@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# Prettify JSON string
+# Use like this: 
+# $ echo '{"ruby": "cool", "java": "not so cool"}' | pj
+# {
+#   "ruby": "cool",
+#   "java": "not so cool"
+# }
+#     
+require 'json'
+jj JSON.load(STDIN)

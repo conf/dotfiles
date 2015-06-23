@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+require 'httparty'
+require 'nokogiri'
+
+def osx_password(domain)
+  res = %x(security 2>&1 find-internet-password -gl #{domain})
+  res.split("\n").grep(/password|acct/).map do |line| 
+    line.strip.match(/[\s=]"(.+)"$/).to_a[1] 
+  end.reverse
+end
+
+def get_html
+  login, pass = osx_password('cabinet.st.uz')
+  form = { 'LoginForm' => { username: login, password: pass } }
+
+  res = HTTParty.post('https://cabinet.st.uz', body: form)
+  res.body
+end
+
+def parse_and_print(html)
+  parsed = Nokogiri::HTML(html)
+
+  account, traffic = parsed.css('.x50')[-2..-1].map { |node| node.text.split("\n").map(&:strip) }
+  # account info
+  puts account.grep(/текущ|\$/i).each_slice(2).map { |pair| pair.join(' ') }
+
+  # traffic info
+  lines = traffic.grep(/(Тариф|лимит|MB|Вход|Исход|Включено|ДА|НЕТ)/)
+  full, splitted = lines.partition { |line| line =~ /тариф|лимит/i }
+  tariff, limit = full.map { |line| line.gsub(/[\s\u00a0]*00:00:00 - 23:59:59/, '')}
+  puts '===================================='
+  puts tariff, limit
+  puts splitted.each_slice(2).map { |pair| pair.join(' ') }
+end
+
+parse_and_print(get_html)

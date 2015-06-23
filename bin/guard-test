@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# From Destroy All Software screencast #10, at:
+# http://destroyallsoftware.com/screencasts/catalog/fast-tests-with-and-without-rails
+#
+# Released under the MIT license: http://opensource.org/licenses/MIT
+#
+# Put this in the script/ directory of your Rails app, then run it with a spec
+# filename. If the spec uses spec_helper, it'll be run inside Bundler.
+# Otherwise, it'll be run directly with whatever `rspec` executable is on the
+# path.
+
+set -e
+
+need_rails=1
+if [ $# -gt 0 ]; then # we have args
+  filenames=$*
+  # Parse only filenames from command line arguments and strip trailing line numbers e.g. spec/my_spec.rb:33
+  grep_filenames=`echo $* | grep -o 'spec/.*.rb'`
+
+  # if we can't match "spec_helper" in our file we have a stand-alone spec
+  grep -r '\brails_helper\b' $grep_filenames > /dev/null || need_rails=''
+else # we have no args
+  filenames='spec'
+fi
+
+command='rspec'
+
+if [ $need_rails ]; then
+  command="bin/rspec"
+fi
+
+$command $filenames
