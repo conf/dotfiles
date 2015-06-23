@@ -1,0 +1,61 @@
+# Sample gitconfig
+#
+[hub]
+        protocol = https
+[user]
+	# Do not define name and email here so this file can be generic,
+	# instead define $GIT_AUTHOR_NAME and $GIT_AUTHOR_EMAIL in .localrc
+	# (which should be loaded by your .zshrc and excluded from .dotfiles)
+        name = !printenv GIT_AUTHOR_NAME
+        email = !printenv GIT_AUTHOR_EMAIL
+[credential]
+        helper = osxkeychain
+[alias]
+	ci = commit --verbose
+        co = checkout
+        promote = !$ZSH/bin/git-promote
+        wtf     = !$ZSH/bin/git-wtf
+        rank-contributors = !$ZSH/bin/git-rank-contributors
+        count   = shortlog -sn
+	aa = add --all
+	di = diff
+	dc = diff --cached
+	amend = commit --amend
+[color]
+        branch = auto
+        diff = auto
+        status = auto
+        ui = auto
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[core]
+        editor = vim
+        excludesfile = ~/.gitignore
+[apply]
+        whitespace = nowarn
+[mergetool]
+        keepBackup = false
+[difftool]
+        prompt = false
+[help]
+        autocorrect = 1
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to suppress warning message
+        default = simple
+[http]
+	postBuffer = 524288000
+
