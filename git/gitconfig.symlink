@@ -13,10 +13,7 @@
 [alias]
 	ci = commit --verbose
         co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        rank-contributors = !$ZSH/bin/git-rank-contributors
-        count   = shortlog -sn
+        count = shortlog -sn
 	aa = add --all
 	di = diff
 	dc = diff --cached
