@@ -37,7 +37,7 @@ setopt HIST_REDUCE_BLANKS
 
 zle -N newtab
 
-bindkey -v # use vim keys in command line
+bindkey -e # use emacs keys in command line
 
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
