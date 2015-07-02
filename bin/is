@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+ROUTER_IP='192.168.1.1'
+CREDENTIALS=`find-internet-password $ROUTER_IP`
+URL="http://$CREDENTIALS@$ROUTER_IP/wancfg.cmd?action=view"
+
+curl $URL -sS | tail -9 | head -1 | sed -E 's/<\/?td>//g' | xargs echo 'Internet status:'
