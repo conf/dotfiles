@@ -17,3 +17,8 @@
 
 /.tddium
 /.tddium-deploy-key
+
+# Notes
+/notes.txt
+
+/redis.yml
