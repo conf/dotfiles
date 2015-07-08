@@ -6,8 +6,6 @@
 	# Do not define name and email here so this file can be generic,
 	# instead define $GIT_AUTHOR_NAME and $GIT_AUTHOR_EMAIL in .localrc
 	# (which should be loaded by your .zshrc and excluded from .dotfiles)
-        name = !printenv GIT_AUTHOR_NAME
-        email = !printenv GIT_AUTHOR_EMAIL
 [credential]
         helper = osxkeychain
 [alias]
