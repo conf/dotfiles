@@ -8,3 +8,6 @@ if test -f $completion
 then
   source $completion
 fi
+
+# Ignore FETCH_HEAD on completion
+zstyle ':completion:*:*' ignored-patterns '*FETCH_HEAD'
