@@ -14,10 +14,8 @@ git_branch() {
 }
 
 git_dirty() {
-  if $(! $git status -s &> /dev/null)
+  if $($git rev-parse --is-inside-work-tree 2> /dev/null)
   then
-    echo ""
-  else
     if [[ $($git status --porcelain) == "" ]]
     then
       echo " on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
