@@ -1,3 +1,2 @@
-alias sc='script/console'
-alias sg='script/generate'
-alias sd='script/destroy'
+alias ss='spring stop && sleep 1; ps ax | ag "[s]pring"'
+alias r='bin/rails'
