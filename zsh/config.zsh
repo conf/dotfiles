@@ -29,6 +29,10 @@ setopt EXTENDED_HISTORY # add timestamps to history
 setopt PROMPT_SUBST
 setopt CORRECT
 setopt COMPLETE_IN_WORD
+# disable arguments matching, this wil allow rake-like arguments as in "rake tweets:send[cpytel]"
+# see https://robots.thoughtbot.com/how-to-use-arguments-in-a-rake-task for details
+unsetopt nomatch
+
 
 setopt APPEND_HISTORY # adds history
 setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
