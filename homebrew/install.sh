@@ -16,6 +16,8 @@ else
 fi
 
 # Install homebrew packages
-brew install grc coreutils
+brew install grc coreutils the_silver_searcher homebrew/dupes/grep
+
+brew cask install google-chrome dropbox 1password karabiner iterm2
 
 exit 0
