@@ -16,8 +16,16 @@ else
 fi
 
 # Install homebrew packages
-brew install grc coreutils the_silver_searcher homebrew/dupes/grep
+brew install grc coreutils the_silver_searcher homebrew/dupes/grep git imagemagick wget
+brew install openssl node
 
-brew cask install google-chrome dropbox 1password karabiner iterm2
+# we need java for elasticsearch
+brew install Caskroom/cask/java
+brew install homebrew/versions/elasticsearch17
+
+brew install postgresql
+
+brew cask install google-chrome dropbox 1password karabiner iterm2 slack tunnelbear
+brew cask install skype zoomus
 
 exit 0
