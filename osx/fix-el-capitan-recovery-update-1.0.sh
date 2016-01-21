@@ -1,0 +1,7 @@
+FOLDER="/private/var/folders/zz/zyxvpxvq6csfxvn_n00000s0000068"
+NAME="OS X El Capitan Recovery Update 1.0"
+echo "There is some stuck update '$NAME' in App Store that can't be installed correctly,"
+echo "this is a fix for that, see details here: https://discussions.apple.com/message/29495449#29495449"
+echo "TL;DR: 1) remove folder $FOLDER 2) restart your computer 3) install that update last time (hopefully)"
+sudo rm -rf "$FOLDER"
+echo "Now you can restart your computer."
