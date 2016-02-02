@@ -12,6 +12,11 @@ if test ! $(which brew)
 then
   echo "  Installing Homebrew for you."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  echo -n "  Updating..."
+  brew update
+  echo "  Upgrading..."
+  brew upgrade
 fi
 
 # Install homebrew packages
