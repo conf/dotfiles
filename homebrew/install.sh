@@ -21,7 +21,7 @@ fi
 
 # Install homebrew packages
 brew install grc coreutils the_silver_searcher homebrew/dupes/grep git imagemagick wget
-brew install openssl node
+brew install openssl node tree
 brew install psgrep
 
 # we need java for elasticsearch
