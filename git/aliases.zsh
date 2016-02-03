@@ -8,7 +8,8 @@ fi
 
 # The rest of my fun git aliases
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gp='git push origin HEAD'
+# these functions live in zsh/prompt.zsh
+alias gp='git push $(has_tracking_branch || echo "-u origin $(git_branch)")'
 alias gd='git diff'
 alias go='git checkout'
 alias gb='git branch'
