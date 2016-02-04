@@ -3,10 +3,7 @@ require 'httparty'
 require 'nokogiri'
 
 def osx_password(domain)
-  res = %x(security 2>&1 find-internet-password -gl #{domain})
-  res.split("\n").grep(/password|acct/).map do |line| 
-    line.strip.match(/[\s=]"(.+)"$/).to_a[1] 
-  end.reverse
+  res = %x(find-internet-password #{domain}).strip.split(':')
 end
 
 def get_html
