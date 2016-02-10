@@ -31,6 +31,6 @@ brew install homebrew/versions/elasticsearch17
 brew install postgresql
 
 brew cask install google-chrome dropbox 1password karabiner iterm2 slack tunnelbear
-brew cask install skype zoomus
+brew cask install skype zoomus grammarly
 
 exit 0
