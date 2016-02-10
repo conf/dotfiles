@@ -57,3 +57,5 @@
 	autosquash = true
 [url "https://"]
 	insteadOf = git://
+[git-up "bundler"]
+	check = true
