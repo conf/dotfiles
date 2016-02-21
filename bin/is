@@ -2,8 +2,10 @@
 
 set -e
 
-ROUTER_IP='192.168.1.1'
+ROUTER_IP=$(route -n get default | grep gateway | awk '{print $2}')
 CREDENTIALS=`find-internet-password $ROUTER_IP`
-URL="http://$CREDENTIALS@$ROUTER_IP/wancfg.cmd?action=view"
+COOKIE="Authorization=Basic $(echo -n "$CREDENTIALS" | base64)"
+URL="http://$ROUTER_IP/info.html"
+REFERER="Referer: $URL"
 
-curl $URL -sS | tail -9 | head -1 | sed -E 's/<\/?td>//g' | xargs echo 'Internet status:'
+curl -H "$REFERER" -b "$COOKIE" $URL -sS | grep 'var info' | cut -d'|' -f5 | xargs echo 'Internet status:'
