@@ -67,10 +67,19 @@ rb_prompt() {
   fi
 }
 
+node_prompt() {
+  if (( $+commands[node] ))
+  then
+    echo "%{$fg_bold[green]%}$(nvm current)%{$reset_color%} "
+  else
+    echo ""
+  fi
+}
+
 directory_name() {
   echo "%{$fg_bold[cyan]%}%~%{$reset_color%}"
 }
-export PROMPT=$'$(rb_prompt)in $(directory_name)$(git_dirty)$(need_push)%{$fg_bold[red]%}♥%{$reset_color%} '
+export PROMPT=$'$(rb_prompt)$(node_prompt)in $(directory_name)$(git_dirty)$(need_push)%{$fg_bold[red]%}♥%{$reset_color%} '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
