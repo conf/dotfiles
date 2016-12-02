@@ -1,2 +1,145 @@
-syntax on
-filetype plugin indent on
+
+" Plugins management
+" ------------------
+call plug#begin('~/.vim/plugged')
+
+Plug 'altercation/vim-colors-solarized'
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rails'
+
+call plug#end()
+
+syntax on                   " required!: syntax highlighting
+filetype plugin indent on   " required!: filetype-specific indenting and plugins
+" set encoding=utf-8
+
+" Vim options
+" -----------
+
+set number                        " show line numbers
+set cursorline                    " highlight current line
+set lazyredraw                    " faster scrolling
+set noswapfile                    " no *.swp artifacts
+set scrolloff=10                  " Keep at least 10 lines visible when scrolling
+set ruler                         " show the cursor position all the time ?
+set laststatus=2                  " Always display the status line ?
+set showcmd                       " display incomplete commands ?
+set autowrite                     " Automatically :write before running commands
+set autoread                      " Automatically read changed files
+set exrc                          " enable per-directory .vimrc files
+set secure                        " disable unsafe commands in local .vimrc files
+set history=50                    " history size
+set foldcolumn=1                  " increase vsplits margin
+set undofile                      " use undo file
+set undodir=~/.config/nvim/undo
+set virtualedit=block
+set hidden
+set shiftwidth=2
+set modeline
+
+" let &colorcolumn=join(range(81, 999), ',') " ????
+
+" Line wrapping
+set wrap
+set linebreak
+set breakindent
+
+set ignorecase
+set smartcase
+
+" Open split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Highlight search
+set hlsearch
+
+" Incremental search
+set incsearch
+
+" map ESC to "jk"
+inoremap jk <ESC>
+
+" set mapleader to Space
+let mapleader = "\<Space>"
+
+" Spelling
+" --------
+
+set spell spelllang=en_us
+" disable spell check by default
+set nospell
+" fix spelling with <leader>f
+nnoremap <leader>fs 1z=
+" toggle spelling visuals with <leader>s
+nnoremap <leader>sp :set spell!<CR>
+
+" Mapping
+" -------
+
+" allow to use "." (repeat last command) in visual mode
+vnoremap . :norm.<CR>
+
+" Reset searching
+nnoremap <leader>/ :let @/ = ""<CR>
+
+" Open tab before current one and run bin/test on it
+" We open tab before, so that when it's closed we're back
+" on our current tab
+noremap <leader>r :-1tab split<CR>:te bin/test %<CR>
+
+" Reload init.vim
+noremap <leader>rv :so ~/.config/nvim/init.vim<CR>
+
+" Use a better shortcut to save file
+nnoremap <leader>w :w<CR>
+
+" Easier switching between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L> :exe "vertical resize 95"<CR>
+nnoremap <C-H> <C-W><C-H> :exe "vertical resize 95"<CR>
+
+" Change splits width
+nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) * 5/4)<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 4/5)<CR>
+
+
+" Plugin Options
+" --------------
+" vim-solarized
+
+  let current_time = strftime('%H%z')
+  if current_time > '08' && current_time < '17'
+    set background=light
+  else
+    set background=dark
+  endif
+
+  colorscheme solarized
+
+  " Toggle background by a hotkey
+  call togglebg#map("<F5>")
+
+  highlight Search guibg=#222222 guifg=Orange
+"  if &background ==# 'dark'
+"    highlight FoldColumn guibg=#002b36
+"    highlight LineNr guibg=#002b36
+"    highlight SignColumn guibg=#002b36
+"    highlight VertSplit guifg=#073642 guibg=#073642
+"    highlight WildMenu guifg=Orange
+"  else
+"    highlight FoldColumn guibg=#fdf6e3
+"    highlight LineNr guibg=#fdf6e3
+"    highlight SignColumn guibg=#fdf6e3
+"    highlight VertSplit guifg=#eee8d5 guibg=#eee8d5
+"    highlight WildMenu guifg=#fdf6e3 guibg=Black
+"    highlight CursorLineNr guibg=#eee8d5
+"  endif
+
+" fzf
+nnoremap <leader>f :FZF<CR>
