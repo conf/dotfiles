@@ -90,13 +90,13 @@ nnoremap <leader>/ :let @/ = ""<CR>
 " Open tab before current one and run bin/test on it
 " We open tab before, so that when it's closed we're back
 " on our current tab
-noremap <leader>r :-1tab split<CR>:te bin/test %<CR>
+nmap <leader>r <leader>w :-1tab split<CR>:te bin/test %<CR>
 
 " Reload init.vim
 noremap <leader>rv :so ~/.config/nvim/init.vim<CR>
 
-" Use a better shortcut to save file
-nnoremap <leader>w :w<CR>
+" Use a better shortcut to save all files
+nnoremap <leader>w :wa<CR>
 
 " Easier switching between splits
 nnoremap <C-J> <C-W><C-J>
@@ -120,6 +120,12 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
+" Save whenever switching windows or leaving vim. This is useful when running
+" the tests inside vim without having to save all files first.
+au FocusLost,WinLeave * :silent! wa
+
+" Trigger autoread when changing buffers or coming back to vim.
+au FocusGained,BufEnter * :silent! !
 
 " Plugin Options
 " --------------
