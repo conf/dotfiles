@@ -8,8 +8,6 @@
 
 \pset null 'NULL'
 
-\set HISTFILE ~/.psqlHistory/psql_history- :HOST - :DBNAME
-
 \set HISTSIZE 50000
 
 \timing
