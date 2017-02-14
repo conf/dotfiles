@@ -1,9 +1,10 @@
-# grc overides for ls
-#   Made possible through contributions from generous benefactors like
-#   `brew install coreutils`
-if $(gls &>/dev/null)
+
+# GRC colorizes nifty unix tools all over the place
+if (( $+commands[grc] )) && (( $+commands[brew] ))
 then
-  alias ls="gls --color=auto"
+  source `brew --prefix`/etc/grc.zsh
+  # gls can be installed via coreutils
+  alias ls="grc --colour=auto gls --color=auto"
   alias lh="ls -lh"
 fi
 
