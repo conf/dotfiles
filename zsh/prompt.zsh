@@ -79,12 +79,4 @@ node_prompt() {
 directory_name() {
   echo "%{$fg_bold[cyan]%}%~%{$reset_color%}"
 }
-export PROMPT=$'$(rb_prompt)$(node_prompt)in $(directory_name)$(git_dirty)$(need_push)%{$fg_bold[red]%}♥%{$reset_color%} '
-set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
-}
-
-precmd() {
-  title "zsh" "%m" "%55<...<%~"
-  set_prompt
-}
+export PROMPT='$(rb_prompt)$(node_prompt)in $(directory_name)$(git_dirty)$(need_push)%{$fg_bold[red]%}♥%{$reset_color%} '
