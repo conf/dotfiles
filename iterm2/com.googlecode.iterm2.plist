@@ -17,7 +17,7 @@
 	<key>AutoHideTmuxClientSession</key>
 	<false/>
 	<key>CheckTestRelease</key>
-	<true/>
+	<false/>
 	<key>ClosingHotkeySwitchesSpaces</key>
 	<true/>
 	<key>CommandSelection</key>
@@ -84,6 +84,10 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSColorPanelMode</key>
+	<string>4</string>
+	<key>NSColorPickerPreferredRGBEntryMode</key>
+	<integer>2</integer>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
@@ -137,18 +141,22 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSColorPanel</key>
+	<string>73 132 228 297 0 0 1440 877 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>763 122 445 77 0 0 1440 877 </string>
+	<string>716 253 445 77 0 0 1440 877 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>269 388 606 456 0 0 1440 877 </string>
+	<key>NSWindow Frame ProfilesPanel</key>
+	<string>250 214 735 382 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>410 382 620 392 0 0 1440 877 </string>
+	<string>410 381 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 162 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>252 355 796 473 0 0 1440 877 </string>
+	<string>422 276 796 473 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 392 1410 485 0 0 1440 877 </string>
+	<string>0 373 1418 504 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -694,7 +702,7 @@
 			<key>Send Code When Idle</key>
 			<false/>
 			<key>Set Local Environment Vars</key>
-			<false/>
+			<true/>
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
@@ -848,11 +856,11 @@
 			<key>Ansi 1 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.14145714044570923</real>
+				<real>0.14145712554454803</real>
 				<key>Green Component</key>
-				<real>0.10840655118227005</real>
+				<real>0.10840645432472229</real>
 				<key>Red Component</key>
-				<real>0.81926977634429932</real>
+				<real>0.81926983594894409</real>
 			</dict>
 			<key>Ansi 10 Color</key>
 			<dict>
@@ -986,12 +994,16 @@
 			<true/>
 			<key>Background Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.15170273184776306</real>
+				<real>0.068832993507385254</real>
+				<key>Color Space</key>
+				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.11783610284328461</real>
+				<real>0.082388646900653839</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.36009296774864197</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -1011,24 +1023,26 @@
 				<real>1</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.5</real>
+			<real>0.30000001192092896</real>
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
-			<true/>
+			<false/>
 			<key>Blur Radius</key>
-			<real>2</real>
+			<real>2.7754206730769231</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.56363654136657715</real>
+				<real>0.38298487663269043</real>
 				<key>Green Component</key>
-				<real>0.56485837697982788</real>
+				<real>0.35665956139564514</real>
 				<key>Red Component</key>
-				<real>0.50599193572998047</real>
+				<real>0.27671992778778076</real>
 			</dict>
+			<key>Bound Hosts</key>
+			<array/>
 			<key>Character Encoding</key>
 			<integer>4</integer>
 			<key>Close Sessions On End</key>
@@ -1042,11 +1056,11 @@
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.51685798168182373</real>
+				<real>0.43850564956665039</real>
 				<key>Green Component</key>
-				<real>0.50962930917739868</real>
+				<real>0.40717673301696777</real>
 				<key>Red Component</key>
-				<real>0.44058024883270264</real>
+				<real>0.32436618208885193</real>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
@@ -1064,18 +1078,18 @@
 			<key>Cursor Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.19370138645172119</real>
+				<real>0.79781103134155273</real>
 				<key>Green Component</key>
-				<real>0.15575926005840302</real>
+				<real>0.89001238346099854</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.91611063480377197</real>
 			</dict>
 			<key>Cursor Type</key>
 			<integer>2</integer>
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Disable Printing</key>
@@ -1088,15 +1102,19 @@
 			<false/>
 			<key>Foreground Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.51685798168182373</real>
+				<real>0.78971505165100098</real>
+				<key>Color Space</key>
+				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.50962930917739868</real>
+				<real>0.83989918231964111</real>
 				<key>Red Component</key>
-				<real>0.44058024883270264</real>
+				<real>0.94116425514221191</real>
 			</dict>
 			<key>Guid</key>
-			<string>E6AD2C91-1682-4EA1-88BB-C7F625A8D6CF</string>
+			<string>27E1DE36-660C-449D-8288-CB082A34ABCA</string>
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
@@ -1313,11 +1331,11 @@
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.21224782436708864</real>
+			<real>0.29600969145569622</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
-			<string>Hotkey Window</string>
+			<string>SSH</string>
 			<key>Non Ascii Font</key>
 			<string>Monaco 14</string>
 			<key>Non-ASCII Anti Aliased</key>
@@ -1345,20 +1363,20 @@
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.56363654136657715</real>
+				<real>0.38298487663269043</real>
 				<key>Green Component</key>
-				<real>0.56485837697982788</real>
+				<real>0.35665956139564514</real>
 				<key>Red Component</key>
-				<real>0.50599193572998047</real>
+				<real>0.27671992778778076</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.19370138645172119</real>
+				<real>0.79781103134155273</real>
 				<key>Green Component</key>
-				<real>0.15575926005840302</real>
+				<real>0.89001238346099854</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.91611063480377197</real>
 			</dict>
 			<key>Semantic History</key>
 			<dict>
@@ -1470,8 +1488,6 @@
 					<string>\btelnet:([a-z0-9A-Z_]+@)?([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\b</string>
 				</dict>
 			</array>
-			<key>Space</key>
-			<integer>-1</integer>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -1481,7 +1497,7 @@
 			<key>Thin Strokes</key>
 			<integer>1</integer>
 			<key>Transparency</key>
-			<real>0.30000001192092896</real>
+			<real>0.0</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
@@ -1499,22 +1515,26 @@
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Tab Color</key>
-			<false/>
+			<true/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Working Directory</key>
 			<string>/Users/alexey</string>
 		</dict>
 	</array>
+	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
+	<true/>
 	<key>NoSyncConfirmBeta</key>
 	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
 	<integer>1</integer>
 	<key>NoSyncHaveShownPromoWithId_4</key>
+	<true/>
+	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
 	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
@@ -1594,11 +1614,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml?shard=70</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=70</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-02-14T23:05:40Z</date>
+	<date>2017-06-20T11:06:27Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -1610,7 +1630,7 @@
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
-	<false/>
+	<true/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.40000000596046448</real>
 	<key>SwitchPaneModifier</key>
@@ -4785,6 +4805,12 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.14</string>
+	<string>3.0.15</string>
+	<key>kCPKSelectionViewPreferredModeKey</key>
+	<integer>0</integer>
+	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
+	<key>kCPKUseSystemColorPicker</key>
+	<true/>
 </dict>
 </plist>
