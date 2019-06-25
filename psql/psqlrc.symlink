@@ -4,8 +4,6 @@
 
 \set QUIET ON
 
-\pset pager always
-
 \pset null 'NULL'
 
 \set HISTSIZE 50000
