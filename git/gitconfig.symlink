@@ -13,6 +13,8 @@
 	di = diff
 	dc = diff --cached
 	amend = commit --amend
+	please = push --force-with-lease
+	commend = commit --amend --no-edit
 [color]
         branch = auto
         diff = auto
@@ -36,7 +38,7 @@
         excludesfile = ~/.gitignore
         autocrlf = input
 [apply]
-        whitespace = nowarn
+        whitespace = fix
 [mergetool]
         keepBackup = false
 [difftool]

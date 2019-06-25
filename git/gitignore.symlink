@@ -3,6 +3,7 @@
 *.swp
 
 /.idea
+.rakeTasks
 
 # Ruby stuff
 /.ruby-gemset

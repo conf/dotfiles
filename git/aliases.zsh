@@ -10,6 +10,7 @@ fi
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 # these functions live in zsh/prompt.zsh
 alias gp='git push $(has_tracking_branch || echo "-u origin $(git_branch)")'
+alias gpr='$(has_tracking_branch) || git push -u origin $(git_branch) && hub pull-request -o'
 alias gd='git diff'
 alias go='git checkout'
 alias gb='git branch'
