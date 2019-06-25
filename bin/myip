@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ifconfig | awk '/192/ { print $2}'
+curl ifconfig.co
