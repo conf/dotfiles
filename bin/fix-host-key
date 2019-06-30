@@ -1,2 +1,0 @@
-#!/bin/bash
-ssh-keygen -R $1 && ssh-keyscan -t ssh-ed25519 $1 >> ~/.ssh/known_hosts
