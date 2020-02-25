@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+# How to use:
+# Click on "View as plain text" on the Jenkins build page
+# and save it to a file, then run this script:
+# $ bottleneck-jenkins build.log 2
+# (second parameter is optional and means throttle threshold,
+# equals 1 by default)
+require 'time'
+
+def human_time(total_seconds)
+  min, sec = total_seconds.divmod(60).map(&:round)
+  min.nonzero? ? "#{min}min #{sec}sec" : "#{sec}sec"
+end
+
+def parse_time(line)
+  Time.parse(line.split(' ', 2).first).to_f
+end
+
+file, threshold = ARGV[0], ARGV[1]
+
+log = file == '-' ? STDIN.readlines : File.readlines(file)
+threshold = (threshold || 1).to_f
+
+puts "Throttling all commands < #{threshold} seconds:"
+
+throttled = {count: 0, time: 0}
+logs_with_timestamps = log.grep(/^\s*\[\d+-\d+-\d+T\d+:\d+:\d+\.\d+Z\]\s+[+>]/)
+
+res = logs_with_timestamps.each_cons(2).map do |first, second|
+   time1 = parse_time(first)
+   time2 = parse_time(second)
+   duration = time2 - time1
+   if duration < threshold
+     throttled[:count] += 1
+     throttled[:time] += duration
+     next
+   end
+   first.split(' ', 2).insert(1, "[ #{human_time(duration).center(12)} ]").join(' ')
+end.compact
+
+puts res
+puts
+puts "Throttled #{throttled[:count]} commands with total duration #{human_time(throttled[:time])}"
+
+build_time = parse_time(logs_with_timestamps.last) - parse_time(logs_with_timestamps.first)
+puts "Total build time: #{human_time(build_time)}"
