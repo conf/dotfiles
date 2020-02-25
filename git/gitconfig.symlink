@@ -62,3 +62,7 @@
 	insteadOf = git://
 [git-up "bundler"]
 	check = true
+[diff]
+	algorithm = patience
+[diff "sopsdiffer"]
+	textconv = sops -d
