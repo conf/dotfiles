@@ -38,11 +38,9 @@ unpushed () {
 }
 
 need_push () {
-  if [[ $(unpushed) == "" ]]
+  if [[ $(unpushed) != "" ]]
   then
-    echo " "
-  else
-    echo " with %{$fg_bold[magenta]%}unpushed%{$reset_color%} "
+    echo " with %{$fg_bold[magenta]%}unpushed%{$reset_color%}"
   fi
 }
 
@@ -79,4 +77,24 @@ node_prompt() {
 directory_name() {
   echo "%{$fg_bold[cyan]%}%~%{$reset_color%}"
 }
-export PROMPT='$(rb_prompt)$(node_prompt)in $(directory_name)$(git_dirty)$(need_push)%{$fg_bold[red]%}♥%{$reset_color%} '
+
+function preexec() {
+  timer=$(($(gdate +%s%0N)/1000000000.0))
+}
+
+function precmd() {
+  if [ $timer ]; then
+    now=$(($(gdate +%s%0N)/1000000000.0))
+    elapsed="$(($now-$timer))"
+
+    if (( $elapsed > 0.01 )); then
+      elapsed=$(printf ' %.02fs' $elapsed)
+    else
+      elapsed=""
+    fi
+
+    unset timer
+  fi
+}
+
+export PROMPT='$(rb_prompt)$(node_prompt)in $(directory_name)$(git_dirty)$(need_push)%F{cyan}${elapsed}%{$fg_bold[red]%} ♥%{$reset_color%} '
