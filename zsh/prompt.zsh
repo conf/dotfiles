@@ -23,7 +23,7 @@ inside_git() {
 
 git_dirty() {
   inside_git || return
-  if [[ $($git status --porcelain) == "" ]]
+  if [[ $($git status --porcelain -uno) == "" ]]
   then
     branch_color="green"
   else
