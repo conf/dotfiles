@@ -52,4 +52,4 @@ bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
 
-$ZSH/bin/tilde-switch.sh > /dev/null
+# $ZSH/bin/tilde-switch.sh > /dev/null
