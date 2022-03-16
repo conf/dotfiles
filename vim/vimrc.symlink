@@ -1,20 +1,38 @@
+syntax on                   " required!: syntax highlighting
+filetype plugin indent on   " required!: filetype-specific indenting and plugins
+
 
 " Plugins management
 " ------------------
-call plug#begin('~/.vim/plugged')
 
-Plug 'altercation/vim-colors-solarized'
+packadd minpac
+call minpac#init()
+
+call minpac#add('tpope/vim-surround')
+call minpac#add('tpope/vim-unimpaired')
+call minpac#add('tpope/vim-commentary')
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+call minpac#add('EdenEast/nightfox.nvim')
+" call minpac#add('altercation/vim-colors-solarized')
+call minpac#add('bogado/file-line') " open via vim file:line syntax
+
+
+
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
+
+
+" call plug#begin('~/.vim/plugged')
+
 " Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" 
+" Plug 'tpope/vim-bundler'
+" Plug 'tpope/vim-rails'
 
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rails'
+" call plug#end()
 
-call plug#end()
-
-syntax on                   " required!: syntax highlighting
-filetype plugin indent on   " required!: filetype-specific indenting and plugins
 " set encoding=utf-8
 
 " Vim options
@@ -127,23 +145,30 @@ au FocusLost,WinLeave * :silent! wa
 " Trigger autoread when changing buffers or coming back to vim.
 au FocusGained,BufEnter * :silent! !
 
+
 " Plugin Options
 " --------------
+
+" nightfox
+
+colorscheme nightfox
+
 " vim-solarized
 
-  let current_time = strftime('%H%z')
-  if current_time > '08' && current_time < '17'
-    set background=light
-  else
-    set background=dark
-  endif
+ let current_time = strftime('%H%z')
+ if current_time > '08' && current_time < '17'
+   set background=light
+ else
+   set background=dark
+ endif
 
-  colorscheme solarized
+" colorscheme solarized
+" let g:solarized_termcolors=256
 
   " Toggle background by a hotkey
-  call togglebg#map("<F5>")
+" call togglebg#map("<F5>")
 
-  highlight Search guibg=#222222 guifg=Orange
+"  highlight Search guibg=#222222 guifg=Orange
 "  if &background ==# 'dark'
 "    highlight FoldColumn guibg=#002b36
 "    highlight LineNr guibg=#002b36
