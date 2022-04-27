@@ -1,0 +1,64 @@
+#!/bin/bash
+# This is a small utility to open commits in GitLab Web UI
+# (glo is short for gitlab open)
+# you can use it either as
+# $ glo -c <commit>
+# if you call it without arguments, it will try to get a commit
+# from the paste buffer 
+# $ glo
+# you can also provide a file and a line number, glo will automatically
+# retrive the commit using "git blame" utility
+# $ glo -f <path> -l <number>
+
+set -euo pipefail
+
+PATH=/opt/homebrew/bin:$PATH
+
+# parsing options
+POSITIONAL_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -c|--commit)
+      COMMIT="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    -l|--line)
+      LINE="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    -f|--file)
+      FILE="$2"
+      shift # past argument
+      ;;
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      POSITIONAL_ARGS+=("$1") # save positional arg
+      shift # past argument
+      ;;
+  esac
+done
+
+# if we have a file and a line
+if [[ -n "$FILE" && -n "$LINE" ]]; then
+  # -s - suppress author name and timestamp
+  # -l - show long revision
+  COMMIT="$(git blame "$FILE" -L "$LINE,$LINE" -sl | awk '{ print $1 }')"
+  HASHED_PATH="$(git blame "$FILE" -L "$LINE,$LINE" -sl | awk '{ printf $2 }' | sha1sum | awk '{ print $1}' )"
+  COMMIT="$COMMIT#$HASHED_PATH"
+fi
+
+COMMIT="${COMMIT:-$(pbpaste)}"
+if [ -z "$COMMIT" ]; then
+  echo "No commit is provided and paste buffer is empty, exiting."
+  exit 1
+fi
+
+URL="https://$(git remote get-url origin | ag -o 'git@\K(.+)(?=.git)' | tr : /)/-/commit/$COMMIT"
+echo "$URL"
+open "$URL"
