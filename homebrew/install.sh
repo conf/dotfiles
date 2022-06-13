@@ -24,13 +24,7 @@ brew install grc coreutils the_silver_searcher homebrew/dupes/grep git imagemagi
 brew install openssl tree watch
 brew install psgrep
 
-# we need java for elasticsearch
-brew install Caskroom/cask/java
-brew install homebrew/versions/elasticsearch17
-
-brew install postgresql
-
-brew cask install google-chrome dropbox 1password karabiner iterm2 slack tunnelbear
-brew cask install skype zoomus grammarly vagrant lastpass
+# brew cask install google-chrome dropbox 1password karabiner iterm2 slack tunnelbear
+# brew cask install skype zoomus grammarly vagrant lastpass
 
 exit 0

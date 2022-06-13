@@ -1,0 +1,1 @@
+brew install pyenv coreutils direnv fzf neovim ag
