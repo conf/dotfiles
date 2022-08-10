@@ -11,7 +11,7 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C
 # these functions live in zsh/prompt.zsh
 alias gp='git push $(has_tracking_branch || echo "-u origin $(git_branch)")'
 alias gpr='$(has_tracking_branch) || git push -u origin $(git_branch) && hub pull-request -o -l wip -p -a conf'
-alias gmr='glab mr create -w --draft --push -a aleksey.shein'
+alias gmr='glab mr create -w --fill --fill-commit-body --draft --push -a aleksey.shein'
 alias gd='git diff'
 alias gc='git checkout'
 alias gb='git branch'
