@@ -6,7 +6,5 @@ if vault token lookup >& /dev/null; then
 	# all is good, our token is still valid
 	cat ~/.vault-token
 else
-	credentials="$(op item get "$ONEPASS_VAULT_ID" --fields label=username,label=password)"
-	IFS=, read username password <<< "$credentials"
-	vault login -field=token -method=userpass username="$username" password="$password"
+	vault login -field=token -method=oidc 2>/dev/null
 fi
