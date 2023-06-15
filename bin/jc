@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+# Extract JIRA ticket from branch
+# jc -> jira commit
+
+branch = `git symbolic-ref --short HEAD`
+
+branch.gsub!(/^(\w+-\d+)-(.+)$/) { "feat(#{$1.upcase}): #{$2.gsub("-", " ")}" }
+exec "git", "commit", "-m", branch, "--edit" 
