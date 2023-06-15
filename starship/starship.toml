@@ -1,0 +1,98 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# todo: 
+# - git status changes
+# - k8s colors
+
+# format = """
+# $kubernetes\
+# $username\
+# $hostname\
+# $directory\
+# $git_branch\
+# $git_state\
+# ${custom.git_status_dirty}\
+# $git_status\
+# $cmd_duration\
+# $line_break\
+# $character"""
+
+
+[aws]
+disabled = true
+style = 'bold blue'
+symbol = '🅰 '
+[aws.region_aliases]
+eu-west-1 = 'eu'
+
+# Replace the '❯' symbol in the prompt with ''
+[character] # The name of the module we are configuring is 'character'
+#success_symbol = '[](bold red)' # The 'success_symbol' segment is being set to '' with the color 'bold green'
+success_symbol = "[](purple)"
+error_symbol = "[✖](red)"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[directory]
+style = "blue"
+
+[docker_context]
+disabled = true
+
+[git_branch]
+symbol = '🌱 '
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[($conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+untracked = ""
+# conflicted = ""
+# modified = ""
+# staged = ""
+# renamed = ""
+# deleted = ""
+stashed = "≡"
+
+# [git_status]
+# format = "[($ahead_behind$stashed)]($style) "
+# style = "cyan"
+# stashed = "≡"
+
+# [custom.git_status_dirty]
+# when = 'test -n "$(git status --porcelain --untracked-files=no)"'
+# symbol = "*"
+# style = "red"
+# format="[$symbol]($style) "
+# shell = ["bash", "--norc", "--noprofile"]
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[kubernetes]
+disabled = false
+style = 'red'
+
+[kubernetes.context_aliases]
+'docker-desktop' = '🐳'
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[php]
+disabled = true
+
+[python]
+disabled = true
+
