@@ -151,16 +151,15 @@ au FocusGained,BufEnter * :silent! !
 
 " nightfox
 
-colorscheme nightfox
-
-" vim-solarized
-
- let current_time = strftime('%H%z')
- if current_time > '08' && current_time < '17'
-   set background=light
- else
-   set background=dark
- endif
+" colorscheme nightfox
+let current_time = strftime('%H%z')
+if current_time > '08' && current_time < '17'
+  colorscheme dayfox
+  " set background=light
+else
+  colorscheme nightfox
+  " set background=dark
+endif
 
 " colorscheme solarized
 " let g:solarized_termcolors=256
@@ -186,3 +185,6 @@ colorscheme nightfox
 
 " fzf
 nnoremap <leader>f :FZF<CR>
+
+" Jenkinsfile syntax highlighting
+au BufNewFile,BufRead Jenkinsfile setf groovy
