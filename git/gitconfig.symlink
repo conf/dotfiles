@@ -58,6 +58,7 @@
 	autosetuprebase = always
 [rebase]
 	autosquash = true
+	autoStash = true
 [url "https://"]
 	insteadOf = git://
 [git-up "bundler"]
@@ -68,3 +69,5 @@
 	textconv = sops -d
 [includeIf "hasconfig:remote.*.url:**.vestiairecollective.com:*/**"]
 	path = ~/.gitconfig.inc
+[commit]
+	verbose = true
