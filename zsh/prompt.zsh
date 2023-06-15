@@ -91,10 +91,12 @@ function precmd() {
       elapsed=$(printf ' %.02fs' $elapsed)
     else
       elapsed=""
+
     fi
 
     unset timer
   fi
 }
 
-export PROMPT='$(rb_prompt)$(node_prompt)in $(directory_name)$(git_dirty)$(need_push)%F{cyan}${elapsed}%{$fg_bold[red]%} ♥%{$reset_color%} '
+#export PROMPT='$(rb_prompt)$(node_prompt)in $(directory_name)$(git_dirty)$(need_push)%F{cyan}${elapsed}%{$fg_bold[red]%} ♥%{$reset_color%} '
+#export PROMPT='$(directory_name)$(git_dirty)$(need_push)%F{cyan}${elapsed}%{$fg_bold[red]%} %{$reset_color%} '

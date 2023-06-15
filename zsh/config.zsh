@@ -1,14 +1,11 @@
-if [[ -n $SSH_CONNECTION ]]; then
-  export PS1='%m:%3~$(git_info_for_prompt)%# '
-else
-  export PS1='%3~$(git_info_for_prompt)%# '
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export PS1='%m:%3~$(git_info_for_prompt)%# '
+# else
+#   export PS1='%3~$(git_info_for_prompt)%# '
+# fi
 
 # Now we can cd to any path in these dirs from anywhere, yay!
 cdpath=(~ ~/projects)
-
-export LSCOLORS="exfxcxdxbxegedabagacad"
-export CLICOLOR=true
 
 fpath=($ZSH/functions $fpath)
 
