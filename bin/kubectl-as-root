@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -euo pipefail
+
+POD="$(kubectl get pods | fzf | cut -f1 -d ' ')"
+CONTAINER_ID="$(kubectl get pod "$POD" -o jsonpath='{range .status.containerStatuses[*]}{.containerID}{"\t"}{.name}{"\n"}{end}' | sed 's,containerd://,,' | fzf | cut -f1)"
+HOST_IP="$(kubectl get pod "$POD" -o jsonpath="{.status.hostIP}")"
+ssh -t $KUBECTL_AS_ROOT_LOGIN@$HOST_IP "sudo runc -root /run/containerd/runc/k8s.io/ exec -t -u 0 $CONTAINER_ID bash"
