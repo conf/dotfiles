@@ -7,9 +7,9 @@
 # Now we can cd to any path in these dirs from anywhere, yay!
 cdpath=(~ ~/projects)
 
-fpath=($ZSH/functions $fpath)
+fpath=($DOTFILES/functions $fpath)
 
-autoload -U $ZSH/functions/*(:t)
+autoload -U $DOTFILES/functions/*(:t)
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -49,4 +49,5 @@ bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
 
-# $ZSH/bin/tilde-switch.sh > /dev/null
+# complete with ;; suggestion for zsh-autosuggestions plugin
+bindkey ';;'      autosuggest-accept
