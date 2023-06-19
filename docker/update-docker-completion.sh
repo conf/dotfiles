@@ -3,5 +3,5 @@
 while read -r file
 do
   dest="_$(basename -s .zsh-completion $file)"
-  ln -svf "$file" "$dest"
+  cp -n "$file" "$dest"
 done < <(find /Applications/Docker.app -type f -name '*.zsh-completion')
