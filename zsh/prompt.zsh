@@ -9,14 +9,6 @@ else
   git="/usr/bin/git"
 fi
 
-git_branch() {
-  $git symbolic-ref --short HEAD 2>/dev/null
-}
-
-has_tracking_branch() {
- $git rev-parse --abbrev-ref @{u} > /dev/null 2>&1
-}
-
 inside_git() {
   $git rev-parse --is-inside-work-tree > /dev/null 2>&1
 }
