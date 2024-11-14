@@ -1,7 +1,7 @@
 [hub]
         protocol = https
 [user]
-	name = Alexey Shein
+	name = Aleksey Shein
 	email = alexey.shein.dev@gmail.com
 [credential]
         helper = osxkeychain
@@ -55,6 +55,7 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
+	autoSetupRemote = true
 [http]
 	postBuffer = 524288000
 
@@ -73,6 +74,8 @@
 	textconv = sops -d
 [includeIf "hasconfig:remote.*.url:**.vestiairecollective.com:*/**"]
 	path = ~/.gitconfig.inc
+[includeIf "hasconfig:remote.*.url:**github.com:vcollective/**"]
+	path = ~/.gitconfig-github.inc
 [commit]
 	verbose = true
 [interactive]
@@ -82,3 +85,12 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[diff-so-fancy]
+	markEmptyLines = false
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
