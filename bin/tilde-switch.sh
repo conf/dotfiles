@@ -5,7 +5,7 @@
 set -euo pipefail
 
 # check if the command returns "(<eol>)"
-if [[ "$(hidutil property --get UserKeyMapping)" == $'(\n)' ]]; then
+if [[ "$(hidutil property --get UserKeyMapping)" == $'(null)' ]]; then
 
   # no existing mapping found, we need to remap the keys
   hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}' > /dev/null

@@ -1,0 +1,3 @@
+sudo cp org.tilde-remap.plist /Library/LaunchDaemons/
+sudo chown root:wheel /Library/LaunchDaemons/org.tilde-remap.plist
+sudo launchctl load /Library/LaunchDaemons/org.tilde-remap.plist
