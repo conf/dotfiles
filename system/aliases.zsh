@@ -1,9 +1,4 @@
 
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
 
 alias ls=lsd
 alias lh='lsd -lh'
