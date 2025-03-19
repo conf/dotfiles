@@ -1,2 +1,4 @@
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if (( $+commands[fzf] ))
+then
+  source <(fzf --zsh)
+fi
