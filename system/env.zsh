@@ -1,7 +1,7 @@
 export EDITOR='nvim'
 
 # let's teach less some colors
-export LESS='-FRXi'
+export LESS='-FRXSi'
 # and uncompress files
 export LESSOPEN="|$(which lesspipe.sh) %s" LESS_ADVANCED_PREPROCESSOR=1
 
