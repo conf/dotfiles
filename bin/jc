@@ -1,8 +1,75 @@
 #!/usr/bin/env ruby
+# Create branch from JIRA ticket
 # Extract JIRA ticket from branch
 # jc -> jira commit
 
-branch = `git symbolic-ref --short HEAD`
+def execute_command!(command)
+  result = %x(#{command})
+  exit_status = $?.exitstatus
 
-branch.gsub!(/^(?:\w+\/)?(\w+-\d+)-(.+)$/) { "feat(#{$1.upcase}): #{$2.gsub("-", " ")}" }
-exec "git", "commit", "-m", branch, "--edit" 
+  if exit_status.nonzero?
+    puts "Command: #{command} exited with #{exit_status}. Output:\n#{result}"
+  end
+
+  result.strip
+end
+
+def pick_jira_ticket
+  execute_command!(%q(jira issues list -a'Aleksey Shein' -s~Done --plain --no-headers | fzf))
+end
+
+# returns hash {type: 'Task', id: 'board-123', summary: 'ticket summary', status: 'Backlog'}
+def parse_ticket(output)
+  delimiter = "__delimiter__"
+  parts = output.gsub!(/\t+/, delimiter).split(delimiter)
+
+  %i(type id summary status).zip(parts).to_h
+end
+
+def branch_name_from(ticket)
+  id = ticket[:id].downcase
+  # cut out text in brackets in front of the summary and then take first 5 words
+  words = ticket[:summary]
+    .gsub(/^[(\[].+?[\])]\s*/, '')
+    .downcase
+    .gsub(/\s+/, ' ')
+    .gsub(/[^\w -]+/, '')
+    .split(' ')
+    .take(5)
+
+  [id, *words].join('-')
+end
+
+def create_branch!(name)
+  execute_command!(%Q(git checkout -b '#{name}'))
+end
+
+def get_current_branch
+  execute_command!(%Q(git symbolic-ref --short HEAD))
+end
+
+def pick_commit_type
+  # todo: add style
+  execute_command!(%Q(echo feat fix | xargs -n1 | fzf))
+end
+
+def commit!(ticket)
+  branch = get_current_branch
+  commit_type = pick_commit_type
+  message = branch.gsub(/^(?:\w+\/)?(\w+-\d+)-(.+)$/) { "#{commit_type}(#{$1.upcase}): #{$2.gsub("-", " ")}" }
+  exec 'git', 'commit', '--edit', '-m', message
+end
+
+def run!
+  if !ARGV.empty? && ARGV[0] == '-b'
+    ticket = parse_ticket(pick_jira_ticket)
+    branch_name = branch_name_from(ticket)
+    # todo: show branch before creation and suggest editing
+    create_branch!(branch_name)
+  else
+    commit!(ticket)
+  end
+end
+
+
+run!
