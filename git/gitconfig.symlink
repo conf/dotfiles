@@ -72,8 +72,6 @@
 	algorithm = patience
 [diff "sopsdiffer"]
 	textconv = sops -d
-[includeIf "hasconfig:remote.*.url:**.vestiairecollective.com:*/**"]
-	path = ~/.gitconfig.inc
 [includeIf "hasconfig:remote.*.url:**github.com:vcollective/**"]
 	path = ~/.gitconfig-github.inc
 [commit]
