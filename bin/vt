@@ -4,7 +4,7 @@ set -euo pipefail
 unset VAULT_TOKEN # we don't care about expired tokens in the env
 if vault token lookup >& /dev/null; then
 	# all is good, our token is still valid
-	cat ~/.vault-token
+	cat ~/.vault-token; echo
 else
 	vault login -field=token -method=oidc 2>/dev/null
 fi
