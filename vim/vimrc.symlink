@@ -1,7 +1,6 @@
 syntax on                   " required!: syntax highlighting
 filetype plugin indent on   " required!: filetype-specific indenting and plugins
 
-
 " Plugins management
 " ------------------
 
@@ -15,11 +14,19 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('EdenEast/nightfox.nvim')
 " call minpac#add('altercation/vim-colors-solarized')
 call minpac#add('bogado/file-line') " open via vim file:line syntax
+" fzf integration
+" set rtp+=/opt/homebrew/opt/fzf
+call minpac#add('junegunn/fzf', { 'do': { -> fzf#install() } })
+call minpac#add('junegunn/fzf.vim')
+
+" NERDTree
+call minpac#add('preservim/nerdtree')
+call minpac#add('ryanoasis/vim-devicons')
 
 
-
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
+command! PackUpdate source $MYVIMRC | call minpac#update()
+command! PackClean  source $MYVIMRC | call minpac#clean()
+command! PackStatus packadd minpac | call minpac#status()
 
 
 " call plug#begin('~/.vim/plugged')
@@ -32,7 +39,10 @@ command! PackClean call minpac#clean()
 " Plug 'tpope/vim-rails'
 
 " call plug#end()
-
+"
+" NERDTree config
+nnoremap <C-P> :NERDTreeToggle<CR> " toggle NERDTree buffer
+nnoremap <C-f> :NERDTreeFind<CR> " find current file in dir tree
 " set encoding=utf-8
 
 " set mapleader to Space
@@ -62,7 +72,7 @@ set hidden
 set shiftwidth=2
 set modeline
 
-" let &colorcolumn=join(range(81, 999), ',') " ????
+let &colorcolumn=join(range(81, 200), ',') " shows a border after 80 characters
 
 " Invisible characters
 " --------------------
@@ -157,8 +167,10 @@ nnoremap <leader>w :wa<CR>
 " Easier switching between splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L> :exe "vertical resize 95"<CR>
-nnoremap <C-H> <C-W><C-H> :exe "vertical resize 95"<CR>
+"nnoremap <C-L> <C-W><C-L> :exe "vertical resize 95"<CR>
+"nnoremap <C-H> <C-W><C-H> :exe "vertical resize 95"<CR>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Change splits width
 nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) * 5/4)<CR>
