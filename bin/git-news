@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# Show diff from previous HEAD position,
+# it's useful if you want to quickly see a diff after git pull, etc.
+
+git diff orig_head... $@
