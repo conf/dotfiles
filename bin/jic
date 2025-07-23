@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # Create branch from JIRA ticket
 # Extract JIRA ticket from branch
-# jc -> jira commit
+# jic -> jira commit
 
 def execute_command!(command)
   result = %x(#{command})
@@ -49,8 +49,8 @@ def get_current_branch
 end
 
 def pick_commit_type
-  # todo: add style
-  execute_command!(%Q(echo feat fix | xargs -n1 | fzf))
+  ticket_types = %Q(feat docs chore fix refactor revert ci)
+  execute_command!(%Q(echo '#{ticket_types}' | gum choose --input-delimiter=' ' --header='What are you trying to commit?' --selected=fix))
 end
 
 def commit!(ticket)
@@ -60,12 +60,15 @@ def commit!(ticket)
   exec 'git', 'commit', '--edit', '-m', message
 end
 
+def confirm_branch_name(name)
+  execute_command!(%Q(echo '#{name}' | gum input --header="Confirm branch creation:"))
+end
+
 def run!
   if !ARGV.empty? && ARGV[0] == '-b'
     ticket = parse_ticket(pick_jira_ticket)
     branch_name = branch_name_from(ticket)
-    # todo: show branch before creation and suggest editing
-    create_branch!(branch_name)
+    create_branch!(confirm_branch_name(branch_name))
   else
     commit!(ticket)
   end
