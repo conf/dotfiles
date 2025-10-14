@@ -9,9 +9,8 @@ fi
 # The rest of my fun git aliases
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 # these functions live in zsh/prompt.zsh
-alias gp='git push $(has_tracking_branch || echo "-u origin $(git_branch)")'
-
-alias gpr='gh pr create -a @me --fill-verbose -w'
+alias gp='git push'
+alias gpr="git push && gh pr create -a @me -w"
 alias gmr='glab mr create -w --fill --fill-commit-body --draft --push -a aleksey.shein'
 alias gd='git diff'
 alias gc='git checkout'
