@@ -15,7 +15,7 @@ def execute_command!(command)
 end
 
 def pick_jira_ticket
-  execute_command!(%q(jira issues list -a'Aleksey Shein' -s~Done --plain --no-headers | fzf))
+  execute_command!(%q(op run -- jira issues list -a'Aleksey Shein' -s~Done --plain --no-headers | fzf))
 end
 
 # returns hash {type: 'Task', id: 'board-123', summary: 'ticket summary', status: 'Backlog'}
