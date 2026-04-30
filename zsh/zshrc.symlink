@@ -35,9 +35,13 @@ done
 if [[ -f "$DOTFILES/zsh/oh-my-zshrc" ]]; then
   source "$DOTFILES/zsh/oh-my-zshrc"
 else
-  # initialize autocomplete here, otherwise functions won't be loaded
-  autoload -U compinit
-  compinit -i
+  autoload -Uz compinit
+  # rebuild zcompdump only once per day
+  if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+  else
+    compinit -C
+  fi
 fi
 
 # load every completion after autocomplete loads
@@ -48,7 +52,6 @@ done
 
 unset config_files
 
-autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
 

@@ -73,7 +73,6 @@ ENABLE_CORRECTION="true"
 plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
-  mise
 )
 
 source $ZSH/oh-my-zsh.sh
