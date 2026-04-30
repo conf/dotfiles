@@ -28,6 +28,6 @@ host=$(echo "$ITEM" | jq -r '.hostname')
 database=$(echo "$ITEM" | jq -r '.database')
 """ >"$TEMP_FILE"
 
-bash -c "sleep 1; rm -f $TEMP_FILE" &
+bash -c "sleep 2; rm -f $TEMP_FILE" &
 
 mycli -R "$MYCLI_PROMPT" --defaults-file "$TEMP_FILE"
