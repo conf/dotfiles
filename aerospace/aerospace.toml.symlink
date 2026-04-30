@@ -212,7 +212,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run = [ "layout tiling" ]
+run = [ "layout floating" ]
 
 [workspace-to-monitor-force-assignment]
   A = 'main' # activity monitor
@@ -221,7 +221,7 @@ run = [ "layout tiling" ]
   M = 'main' # music
   N = 'main' # notes
   P = 'main' # phpstorm
-  S = 'secondary' # slack
+  S = 'main' # slack
   T = 'main' # telegram
 
 
