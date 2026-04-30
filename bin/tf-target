@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euo pipefail
+
+export TF_VAR_vault_token="$(vt)"
+
+cmd="terraform apply $(
+  pbpaste | rg -o -r'$1' '# (.+) (will|must) be' | gxargs -I{} -d'\n' echo -target "'{}'" | paste -s -d' ' -
+)"
+
+echo $cmd
+exec bash -c "$cmd"
