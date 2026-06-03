@@ -72,6 +72,9 @@
 	autoStash = true
 [url "https://"]
 	insteadOf = git://
+; Default (personal) push/fetch over the personal-account ssh key
+[url "git@github.com-personal:"]
+	insteadOf = git@github.com:
 [git-up "bundler"]
 	check = true
 [diff]
