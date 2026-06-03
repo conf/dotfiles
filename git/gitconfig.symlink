@@ -1,14 +1,20 @@
 [hub]
-        protocol = https
+	protocol = https
 [user]
 	name = Aleksey Shein
 	email = alexey.shein.dev@gmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICNgJcc+YSVkXYZvus98hY4RIHCNTN4MTcje5aXn3jXv
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 [credential]
-        helper = osxkeychain
+	helper = osxkeychain
 [alias]
 	ci = commit --verbose
-        co = checkout
-        count = shortlog -sn
+	co = checkout
+	count = shortlog -sn
 	aa = add --all
 	di = diff
 	dc = diff --cached
@@ -16,9 +22,9 @@
 	please = push --force-with-lease
 	commend = commit --amend --no-edit
 [color]
-        branch = auto
-        diff = auto
-        status = auto
+	branch = auto
+	diff = auto
+	status = auto
 	ui = true
 [color "status"]
 	added = yellow
@@ -37,24 +43,24 @@
 	commit = yellow bold
 	whitespace = red reverse
 [core]
-        editor = nvim
-        excludesfile = ~/.gitignore
-        autocrlf = input
+	editor = nvim
+	excludesfile = ~/.gitignore
+	autocrlf = input
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [apply]
-        whitespace = fix
+	whitespace = fix
 [mergetool]
-        keepBackup = false
+	keepBackup = false
 [difftool]
-        prompt = false
+	prompt = false
 [help]
-        autocorrect = 1
+	autocorrect = 1
 [push]
-        # See `git help config` (search for push.default)
-        # for more information on different options of the below setting.
-        #
-        # Setting to git 2.0 default to suppress warning message
-        default = simple
+	# See `git help config` (search for push.default)
+	# for more information on different options of the below setting.
+	#
+	# Setting to git 2.0 default to suppress warning message
+	default = simple
 	autoSetupRemote = true
 [http]
 	postBuffer = 524288000
@@ -72,10 +78,14 @@
 	algorithm = patience
 [diff "sopsdiffer"]
 	textconv = sops -d
+; Work account: override personal signing identity for vcollective remotes only
 [includeIf "hasconfig:remote.*.url:**github.com:vcollective/**"]
-	path = ~/.gitconfig-github.inc
+	path = ~/.gitconfig-work.inc
 [commit]
 	verbose = true
+	gpgsign = true
+[tag]
+	gpgsign = true
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [color "diff-highlight"]

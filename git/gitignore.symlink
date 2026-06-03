@@ -33,3 +33,5 @@
 init.txt
 plan.txt
 drift.log
+
+**/.claude/settings.local.json
