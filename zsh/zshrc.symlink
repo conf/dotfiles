@@ -8,14 +8,6 @@ fi
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=$HOME/.dotfiles
 
-# Stash your environment variables in ~/.localrc. This means they'll stay out
-# of your main dotfiles repository (which may be public, like this one), but
-# you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
-
 # all of our zsh files
 typeset -U config_files
 config_files=($DOTFILES/**/*.zsh)
@@ -61,3 +53,13 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+
+# Stash your environment variables in ~/.localrc. This means they'll stay out
+# of your main dotfiles repository (which may be public, like this one), but
+# you'll have access to them in your scripts.
+# Sourced last so it can override anything set by the config files above
+# (e.g. cdpath from zsh/config.zsh).
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
