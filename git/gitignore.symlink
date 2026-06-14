@@ -35,3 +35,9 @@ plan.txt
 drift.log
 
 **/.claude/settings.local.json
+
+# mise
+mise.toml
+.mise.toml
+
+!.github
