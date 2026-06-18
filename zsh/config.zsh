@@ -49,5 +49,7 @@ bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
 
+bindkey -s $'\e[27;2;13~' '|' # replace mistyped Shift+Enter for | character (instead of typing ;2;13~.)
+
 # complete with ;; suggestion for zsh-autosuggestions plugin
 bindkey ';;'      autosuggest-accept
